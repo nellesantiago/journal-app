@@ -1,0 +1,31 @@
+// Place all the styles related to the tasks controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+input[type=checkbox]:checked + span {
+    text-decoration: line-through;
+}
+
+input[type=checkbox]:checked + span + span{
+    text-decoration: line-through;
+}
+
+input[type=checkbox]:checked + span + span + span{
+    text-decoration: line-through;
+}
+
+input[type=checkbox]:checked + span + span + span + span {
+    display: none;
+}
+
+input[type=checkbox]:checked + span + span + span + span + span {
+    display: none;
+}
+
+.head {
+    font-weight: 600;
+    margin-left: 40px;
+}
+
+.body {
+    margin-right: 30px;
+}
