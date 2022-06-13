@@ -1,71 +1,62 @@
 <div class="categories">
   <div class="nav">
     <div class="title">
-    <i class="fa-solid fa-list-check"></i>
+      <i class="fa-solid fa-list-check"></i>
       Multitask
     </div>
     <div class="options">
       <ul>
         <li><i class="fa-solid fa-user-tie"></i><%= current_user.email %></li>
         <li><%= link_to destroy_user_session_path, method: :delete do %>
-          <i class="fa-solid fa-right-from-bracket"></i>
-        <% end %>
-</li>
+            <i class="fa-solid fa-right-from-bracket"></i>
+          <% end %>
+        </li>
       </ul>
     </div>
   </div>
-
   <div class="main">
   </div>
   <h1>Today's Tasks</h1>
-<table>
-  <thead>
-    <tr>
-      <span>Category</span>
-      <span>Tasks</span>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @tasks.each do |task| %>
-      <% if task.date == Date.current %>
-    <tr>  
-      <label>
-        <input type="checkbox">
-        <span> <%= task.category.title %></span>
-        <span> <%= task.title %> </span>
-      </label>
-    </tr>
-    <% end %>
-  <% end %>
-  </tbody>
-  </table>
-
-
-<p id="notice"><%= notice %></p>
-
-<h1>Categories</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @categories.each do |category| %>
+  <table>
+    <thead>
       <tr>
-        <td><%= category.title %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Delete', category, method: :delete, data: { confirm: "Are you sure you want to delete this category? This can't be undone." } %></td>
+        <span>Category</span>
+        <span>Tasks</span>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Category', new_category_path %>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <% if task.date == Date.current %>
+          <tr>
+            <label>
+              <input type="checkbox">
+              <span> <%= task.category.title %></span>
+              <span> <%= task.title %> </span>
+            </label>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <p id="notice"><%= notice %></p>
+  <h1>Categories</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @categories.each do |category| %>
+        <tr>
+          <td><%= category.title %></td>
+          <td><%= link_to 'Show', category %></td>
+          <td><%= link_to 'Edit', edit_category_path(category) %></td>
+          <td><%= link_to 'Delete', category, method: :delete, data: { confirm: "Are you sure you want to delete this category? This can't be undone." } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <br>
+  <%= link_to 'New Category', new_category_path %>
