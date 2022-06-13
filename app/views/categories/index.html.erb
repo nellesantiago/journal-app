@@ -1,4 +1,23 @@
-<h1>Today's Tasks</h1>
+<div class="categories">
+  <div class="nav">
+    <div class="title">
+    <i class="fa-solid fa-list-check"></i>
+      Multitask
+    </div>
+    <div class="options">
+      <ul>
+        <li><i class="fa-solid fa-user-tie"></i><%= current_user.email %></li>
+        <li><%= link_to destroy_user_session_path, method: :delete do %>
+          <i class="fa-solid fa-right-from-bracket"></i>
+        <% end %>
+</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="main">
+  </div>
+  <h1>Today's Tasks</h1>
 <table>
   <thead>
     <tr>
@@ -50,4 +69,3 @@
 <br>
 
 <%= link_to 'New Category', new_category_path %>
-<%= link_to "Log out", destroy_user_session_path, method: :delete%>
