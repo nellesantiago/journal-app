@@ -15,13 +15,15 @@
       <% @tasks.each do |task| %>
         <% if task.date == Date.current %>
           <label>
-            <input type="checkbox">
+            <%= check_box_tag :checkbox, 1, false %>
             <span class="body"><%= task.title %></span>
             <span class="body"><%= task.body %></span>
             <span class="body"><%= task.date %></span>
             <span><%= link_to 'Show', category_task_path(@category, task) %></span>
             <span><%= link_to 'Edit', edit_category_task_path(@category, task) %></span>
             <span><%= link_to 'Delete', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } %></span>            </label>
+          <% if params[:calls_check].eql?('1') %>
+          <% end %>
         <% end %>
       </tr>
     <% end %>

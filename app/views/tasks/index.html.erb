@@ -42,46 +42,48 @@
     <% @tasks.each do |task| %>
       <% if task.date > Date.current %>
         <label>
-          <input type="checkbox">
-          <span class="body"><%= task.title %></span>
+          <%= hidden_field_tag :name, 'false' %>
+          <%= check_box_tag :name, true, is_checked? %>          <span class="body"><%= task.title %></span>
           <span class="body"><%= task.body %></span>
           <span class="body"><%= task.date %></span>
           <span><%= link_to 'Show', category_task_path(@category, task) %></span>
           <span><%= link_to 'Edit', edit_category_task_path(@category, task) %></span>
           <span><%= link_to 'Delete', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } %></span>            </label>
+        <% if params[:checkbox].is_checked? %>
+          Complete
+        <% end %>
+        <tr>
+        </tr>
       <% end %>
+    </tbody>
+  </table>
+  <br>
+  <h2>Overdue Tasks</h2>
+  <table>
+    <thead>
       <tr>
+        <span class="head">Title</span>
+        <span class="head">Body</span>
+        <span class="head">Date</span>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
-<h2>Overdue Tasks</h2>
-<table>
-  <thead>
-    <tr>
-      <span class="head">Title</span>
-      <span class="head">Body</span>
-      <span class="head">Date</span>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @tasks.each do |task| %>
-      <% if task.date < Date.current %>
-        <label>
-          <input type="checkbox">
-          <span class="body"><%= task.title %></span>
-          <span class="body"><%= task.body %></span>
-          <span class="body"><%= task.date %></span>
-          <span><%= link_to 'Show', category_task_path(@category, task) %></span>
-          <span><%= link_to 'Edit', edit_category_task_path(@category, task) %></span>
-          <span><%= link_to 'Delete', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } %></span>            </label>
+    </thead>
+    <tbody>
+      <% @tasks.each do |task| %>
+        <% if task.date < Date.current %>
+          <label>
+            <input type="checkbox">
+            <span class="body"><%= task.title %></span>
+            <span class="body"><%= task.body %></span>
+            <span class="body"><%= task.date %></span>
+            <span><%= link_to 'Show', category_task_path(@category, task) %></span>
+            <span><%= link_to 'Edit', edit_category_task_path(@category, task) %></span>
+            <span><%= link_to 'Delete', category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } %></span>            </label>
+        <% end %>
+        <tr>
+        </tr>
       <% end %>
-      <tr>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'New Task', new_category_task_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+    </tbody>
+  </table>
+  <%= link_to 'New Task', new_category_task_path(@category) %> |
+  <%= link_to 'Back', categories_path %>
