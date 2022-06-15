@@ -1,15 +1,31 @@
-<p id="notice"><%= notice %></p>
-<p>
-  <strong>Title:</strong>
-  <%= @task.title %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= @task.body %>
-</p>
-<p>
-  <strong>Date:</strong>
-  <%= @task.date %>
-</p>
-<%= link_to 'Edit', edit_category_task_path(@task) %> |
-<%= link_to 'Back', category_path %>
+<div class="new-task">
+  <div class="overlay">
+    <div class="container">
+      <div class="title">
+        <div class="flex">
+          <div><%= @task.title %></div>
+          <div class="name">
+            <% if @today.where(title: @task.title) %>
+              Today's Task
+              <% elsif @scheduled.where(title: @task.title) %>
+              Scheduled Task
+            <% end %>
+          </div>
+        </div>
+        <%= link_to category_tasks_path(@category) do %>
+          <i class="fa-solid fa-circle-xmark"></i>
+        <% end %>
+      </div>
+      <div class="notice"><%= notice %></div>
+      <div class="form">
+        <div>  <%= @task.title %>
+        </div>
+        <div>  <%= @task.body %>
+        </div>
+        <div>  <%= @task.date.strftime("%b %m, %Y") %>
+        </div>
+        <div><%= link_to 'Edit', edit_category_task_path(@category, @task) %></div>
+      </div>
+    </div>
+  </div>
+</div>
