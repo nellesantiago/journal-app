@@ -1,11 +1,12 @@
 class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: :page
-  before_action :set_category, only: %i[ show edit update destroy ]
+  before_action :set_category, only: %i[ show edit update destroy]
 
   # GET /categories or /categories.json
   def index
     @categories = current_user.categories
     @tasks = current_user.tasks
+    @today = @tasks.where('date = ?', Date.current)
   end
 
   # GET /categories/1 or /categories/1.json
@@ -15,7 +16,7 @@ class CategoriesController < ApplicationController
 
   # GET /categories/new
   def new
-    @category = Category.new
+    @category = current_user.categories.build
   end
 
   # GET /categories/1/edit
@@ -52,7 +53,7 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    @category.tasks.destroy_all
+    # @category.tasks.destroy_all
     @category.destroy
 
     respond_to do |format|
@@ -64,7 +65,7 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:id])
+      @category = current_user.categories.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
