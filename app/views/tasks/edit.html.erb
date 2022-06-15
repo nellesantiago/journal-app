@@ -1,4 +1,18 @@
-<h1>Editing Task</h1>
-<%= render 'form', task: @task, url: category_task_path %>
-<%= link_to 'Show', category_task_path(@task) %> |
-<%= link_to 'Back', category_tasks_path(@category) %>
+<div class="modal-task">
+  <div class="overlay">
+    <div class="container">
+      <div class="title">
+        <div class="flex">
+        <div>Edit Task</div>
+        <div class="name"><%= @category.title%></div>
+        </div>
+        <%= link_to category_tasks_path(@category) do %>
+          <i class="fa-solid fa-circle-xmark"></i>
+        <% end %>
+      </div>
+      <div class="form">
+        <%= render 'form', task: @task, url: category_task_path %>
+      </div>
+    </div>
+  </div>
+</div>
