@@ -17,12 +17,16 @@
   <div class="main">
     <div class="left">
       <div class="title"><i class="fa-solid fa-clipboard-list"></i>Task Categories</div>
+      <% if flash.notice.blank? %>
+      <% else %>
+        <div class="notice"><%= notice %></div>
+      <% end %>
       <div class="container">
         <% @categories.order(created_at: :desc).each do |category| %>
           <div class="box">
             <div class="category"> <%= category.title %> </div>
             <div class="details">
-              <div><i class="fa-solid fa-thumbtack"></i>
+              <div class="task-count"><i class="fa-solid fa-thumbtack"></i>
                 <%= pluralize(category.tasks.count, "Task") %></div>
               <% category.tasks.order(updated_at: :desc).limit(1).each do |task| %>
                 <div> <i class="fa-solid fa-arrows-rotate"></i>Last updated: <%= task.updated_at.strftime("%b %d, %Y") %>
@@ -30,7 +34,7 @@
               <% end %>
             </div>
             <div class="options">
-              <%= link_to category do %>
+              <%= link_to category_tasks_path(category) do %>
                 <div>
                   <i class="fa-solid fa-list-ul"></i></div>
               <% end %>
