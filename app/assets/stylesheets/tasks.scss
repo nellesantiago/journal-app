@@ -1,31 +1,275 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-input[type=checkbox]:checked + span {
-    text-decoration: line-through;
+.tasks {
+  user-select: none;
+
+  .nav {
+    height: 70px;
+    background-color: rgb(250, 224, 138);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+
+    .title {
+      font-weight: 700;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: rgb(239, 141, 14);
+      text-shadow: 2px 2px 1px rgb(70, 70, 70);
+
+      .fa-list-check {
+        font-size: 26px;
+      }
+    }
+    a {
+      color: rgb(47, 47, 47);
+    }
+
+    .options {
+      display: flex;
+      align-items: center;
+
+      .fa-user-tie {
+        margin-right: 10px;
+      }
+    }
+
+    ul li {
+      display: inline-flex;
+      list-style-type: none;
+      margin-left: 60px;
+      cursor: pointer;
+    }
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    padding: 30px 50px 0 50px;
+
+    .title {
+      font-size: 32px;
+      font-weight: 700;
+      padding: 15px 20px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      background-color: rgb(47, 47, 47);
+      width: 100%;
+      justify-content: space-between;
+      margin-bottom: 10px;
+
+      a {
+        text-decoration: none;
+        color: rgb(47, 47, 47);
+      }
+
+      .fa-solid {
+        margin-right: 15px;
+        font-size: 14px;
+        color: rgb(47, 47, 47);
+      }
+
+      .new,
+      .category {
+        font-size: 16px;
+        font-weight: 500;
+        background-color: rgb(246, 226, 162);
+        padding: 10px 30px;
+        border-radius: 5px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: rgb(240, 209, 105);
+        }
+
+        a {
+          color: rgb(47, 47, 47);
+        }
+      }
+    }
+
+    .notice {
+      background-color: rgb(177, 226, 137);
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: 1s ease-in-out;
+    }
+
+    .container {
+      background-color: rgb(250, 224, 138);
+      margin: 10px 0 20px 0;
+      height: 370px;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 1px 1px 2px rgb(75, 69, 22);
+
+      .task-title {
+        display: flex;
+        justify-content: space-between;
+        font-size: 30px;
+        font-weight: 700;
+        border-bottom: 2px dashed rgba(47, 47, 47, 0.6);
+        padding: 0 0 10px 0;
+
+        .count {
+          display: flex;
+          justify-content: space-between;
+          width: 250px;
+          font-size: 11px;
+
+          .completed,
+          .incomplete {
+            background-color: rgb(69, 127, 22);
+            color: white;
+            border-radius: 50px;
+            font-weight: 400;
+            width: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+          }
+
+          .incomplete {
+            background-color: rgb(171, 122, 44);
+            color: white;
+          }
+
+          .incomplete-overdue {
+            background-color: rgb(172, 55, 55);
+          }
+
+          .incomplete-today {
+            background-color: rgb(70, 159, 121);
+
+          }
+        }
+
+        .fa-regular {
+          margin-right: 10px;
+        }
+      }
+
+      .today-title {
+        color: rgb(69, 127, 22);
+      }
+
+      .schedule-title {
+        color: rgb(46, 122, 166);
+      }
+
+      .overdue-title {
+        color: rgb(172, 55, 55);
+      }
+
+      .box {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        overflow: scroll;
+        font-size: 16px;
+        height: 250px;
+
+        .task,
+        .task-checked {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          width: 100%;
+          margin-bottom: 10px;
+          cursor: pointer;
+          background-color: rgb(47, 47, 47);
+          min-height: 40px;
+          align-items: center;
+          color: white;
+          padding: 0 20px;
+          border-radius: 5px;
+
+          .check {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+
+            .name,
+            .name-checked {
+              margin-left: 10px;
+              cursor: pointer;
+              text-transform: capitalize;
+            }
+
+            .name-checked {
+              text-decoration: line-through;
+              color: rgba(255, 255, 255, 0.7);
+            }
+          }
+
+          .date,
+          .date-checked {
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 14px;
+            align-items: center;
+
+            .fa-regular {
+              margin-right: 10px;
+              font-size: 12px;
+            }
+          }
+
+          .date-checked {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.7);
+          }
+
+          .options {
+            display: flex;
+            justify-content: flex-end;
+
+            .fa-solid {
+              margin-left: 30px;
+            }
+
+            .fa-list-ul {
+              color: rgb(159, 215, 113);
+            }
+
+            .fa-pen-to-square {
+              color: rgb(137, 196, 231);
+            }
+
+            .fa-trash-can {
+              color: rgb(241, 125, 125);
+            }
+          }
+        }
+
+        .task-checked {
+          background-color: rgba(47, 47, 47, 0.5);
+        }
+
+        .no {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: rgb(47, 47, 47);
+          color: white;
+          height: 40px;
+          border-radius: 5px;
+          font-size: 14px;
+        }
+      }
+    }
+  }
 }
 
-input[type=checkbox]:checked + span + span{
-    text-decoration: line-through;
-}
-
-input[type=checkbox]:checked + span + span + span{
-    text-decoration: line-through;
-}
-
-input[type=checkbox]:checked + span + span + span + span {
-    display: none;
-}
-
-input[type=checkbox]:checked + span + span + span + span + span {
-    display: none;
-}
-
-.head {
-    font-weight: 600;
-    margin-left: 40px;
-}
-
-.body {
-    margin-right: 30px;
+input[type='checkbox'] {
+  accent-color: orange;
+  cursor: pointer;
 }
