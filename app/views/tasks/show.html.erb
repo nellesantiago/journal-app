@@ -1,14 +1,16 @@
-<div class="new-task">
+<div class="modal-task">
   <div class="overlay">
     <div class="container">
       <div class="title">
         <div class="flex">
           <div><%= @task.title %></div>
-          <div class="name">
-            <% if @today.where(title: @task.title) %>
-              Today's Task
-              <% elsif @scheduled.where(title: @task.title) %>
-              Scheduled Task
+          <div class="names">
+            <% if @today.include?(@task) %>
+              <div class="today">Today's Task</div>
+            <% elsif @scheduled.include?(@task) %>
+              <div class="scheduled">Scheduled Task</div>
+            <% else %>
+              <div class="overdue">Overdue Task</div>
             <% end %>
           </div>
         </div>
@@ -17,14 +19,15 @@
         <% end %>
       </div>
       <div class="notice"><%= notice %></div>
-      <div class="form">
-        <div>  <%= @task.title %>
+      <div class="main">
+        
+          <div class="textarea">  <%= @task.body %>
         </div>
-        <div>  <%= @task.body %>
+        <div class="date">  <i class="fa-solid fa-calendar-day"></i><%= @task.date.strftime("%b %m, %Y") %>
         </div>
-        <div>  <%= @task.date.strftime("%b %m, %Y") %>
-        </div>
-        <div><%= link_to 'Edit', edit_category_task_path(@category, @task) %></div>
+        <%= link_to edit_category_task_path(@category, @task) do %>
+        <div class="edit-btn">Edit</div>
+        <% end %>
       </div>
     </div>
   </div>
