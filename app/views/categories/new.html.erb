@@ -1,3 +1,20 @@
-<h1>New Category</h1>
-<%= render 'form', category: @category %>
-<%= link_to 'Back', categories_path %>
+<div class="modal-category">
+  <div class="overlay">
+    <div class="container">
+      <div class="title">
+        <div class="flex">
+          <div>Add New Category</div>
+          <% if @category.title.blank? %>
+          <% else %>
+          <div class="name"><%= @category.title%></div> <% end %>
+        </div>
+        <%= link_to categories_path do %>
+          <i class="fa-solid fa-circle-xmark"></i>
+        <% end %>
+      </div>
+      <div class="form">
+        <%= render 'form', category: @category %>
+      </div>
+    </div>
+  </div>
+</div>
