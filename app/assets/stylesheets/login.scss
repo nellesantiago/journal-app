@@ -13,6 +13,10 @@ body {
   letter-spacing: 1px;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 .login {
   height: 100vh;
   width: 100%;
