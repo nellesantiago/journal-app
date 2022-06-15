@@ -1,4 +1,18 @@
-<h1>Editing Category</h1>
-<%= render 'form', category: @category %>
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<div class="modal-category">
+  <div class="overlay">
+    <div class="container">
+      <div class="title">
+        <div class="flex">
+        <div>Edit Category</div>
+        <div class="name"><%= @category.title%></div>
+        </div>
+        <%= link_to categories_path do %>
+          <i class="fa-solid fa-circle-xmark"></i>
+        <% end %>
+      </div>
+      <div class="form">
+        <%= render 'form', category: @category %>
+      </div>
+    </div>
+  </div>
+</div>
