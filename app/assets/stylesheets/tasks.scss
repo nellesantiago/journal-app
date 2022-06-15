@@ -14,14 +14,14 @@
 
     .title {
       font-weight: 700;
-      font-size: 28px;
+      font-size: 32px;
       text-transform: uppercase;
       letter-spacing: 1px;
       color: rgb(239, 141, 14);
       text-shadow: 2px 2px 1px rgb(70, 70, 70);
 
       .fa-list-check {
-        font-size: 26px;
+        font-size: 30px;
       }
     }
     a {
@@ -48,7 +48,7 @@
   .main {
     display: flex;
     flex-direction: column;
-    padding: 30px 50px 0 50px;
+    padding: 40px 50px 0 50px;
 
     .title {
       font-size: 32px;
