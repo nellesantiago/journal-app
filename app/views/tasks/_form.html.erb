@@ -10,15 +10,13 @@
     </div>
   <% end %>
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "Title"%>
   </div>
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, placeholder: "Notes"%>
   </div>
   <div class="field">
-    <%= form.label :date %>
+    <i class="fa-solid fa-calendar-minus"></i>
     <%= form.date_select :date %>
   </div>
   <div class="actions">
