@@ -28,6 +28,7 @@
         font-size: 30px;
       }
     }
+
     a {
       color: rgb(47, 47, 47);
     }
@@ -50,18 +51,19 @@
   }
 
   .main {
-    display: flex;
-    justify-content: space-between;
-    padding: 30px 50px 0 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 30px 40px 0 60px;
+    justify-items: center;
 
     img {
       width: 800px;
       margin-top: 40px;
     }
 
-    .left {
+    .right {
       margin-top: 10px;
-      
+
       .title {
         font-size: 32px;
         font-weight: 600;
@@ -71,7 +73,121 @@
         align-items: center;
         background-color: rgb(47, 47, 47);
         color: white;
-        width: 694px;
+        width: 750px;
+
+        .fa-solid {
+          margin-right: 15px;
+          font-size: 26px;
+        }
+      }
+
+      .main {
+        display: flex;
+        flex-wrap: wrap;
+        height: 560px;
+        overflow-y: scroll;
+        width: 750px;
+        padding: 0;
+
+        .container {
+          display: flex;
+          flex-direction: column;
+          width: 100%;
+          flex-wrap: wrap;
+
+          .task {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            width: 100%;
+            background-color: rgb(250, 224, 138);
+            border-radius: 5px;
+            margin-top: 10px;
+            height: 70px;
+            align-items: center;
+            padding: 0 20px;
+
+            .title-box {
+              display: flex;
+              align-items: center;
+
+              .name {
+                font-weight: 600;
+                font-size: 20px;
+                margin-right: 10px;
+                text-transform: capitalize;
+              }
+
+              .category {
+                background-color: rgb(194, 163, 63);
+                font-size: 12px;
+                letter-spacing: 0;
+                border-radius: 5px;
+                padding: 5px 10px;
+                color: white;
+              }
+            }
+
+            .status {
+              display: flex;
+              justify-content: center;
+              font-size: 12px;
+              margin-left: 40px;
+
+              .completed,
+              .ongoing {
+                background-color: rgb(176, 224, 137);
+                padding: 5px 10px;
+                border-radius: 5px;
+                width: 100px;
+                text-align: center;
+                font-weight: 500;
+                text-transform: uppercase;
+                letter-spacing: 0;
+              }
+
+              .ongoing {
+                background-color: rgb(157, 209, 240);
+              }
+            }
+
+            .options {
+              display: flex;
+              justify-content: flex-end;
+
+              .fa-solid {
+                margin-left: 20px;
+              }
+
+              .fa-list-ul {
+                color: rgb(70, 134, 18);
+              }
+
+              .fa-pen-to-square {
+                color: rgb(44, 129, 179);
+              }
+
+              .fa-trash-can {
+                color: rgb(201, 90, 90);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .left {
+      margin-top: 10px;
+
+      .title {
+        font-size: 32px;
+        font-weight: 600;
+        padding: 15px 20px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        background-color: rgb(47, 47, 47);
+        color: white;
+        width: 750px;
 
         .fa-solid {
           margin-right: 15px;
@@ -86,7 +202,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 694px;
+        width: 750px;
         margin: 10px 0 0 0;
       }
 
@@ -98,10 +214,10 @@
 
         .box {
           height: 270px;
-          width: 337px;
+          width: 370px;
           background-color: rgb(250, 224, 138);
           border-radius: 10px;
-          margin: 10px 20px 0 0;
+          margin: 10px 10px 0 0;
           display: flex;
           flex-direction: column;
           justify-content: space-between;
@@ -135,7 +251,7 @@
           .options a {
             color: white;
             height: 35px;
-            width: 93px;
+            width: 120px;
             display: flex;
             align-items: center;
             justify-content: center;
