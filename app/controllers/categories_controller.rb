@@ -53,7 +53,6 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1 or /categories/1.json
   def destroy
-    # @category.tasks.destroy_all
     @category.destroy
 
     respond_to do |format|

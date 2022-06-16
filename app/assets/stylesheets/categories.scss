@@ -36,9 +36,12 @@
     .options {
       display: flex;
       align-items: center;
+      font-size: 18px;
+      font-weight: 600;
 
       .fa-user-tie {
         margin-right: 10px;
+        font-size: 16px;
       }
     }
 
@@ -47,6 +50,7 @@
       list-style-type: none;
       margin-left: 60px;
       cursor: pointer;
+      align-items: center;
     }
   }
 
@@ -89,11 +93,25 @@
         width: 750px;
         padding: 0;
 
+        .no-task {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          background-color: rgb(250, 224, 138);
+          border-radius: 5px;
+          margin-top: 10px;
+          height: 70px;
+          padding: 0 20px;
+          font-weight: 500;
+          font-size: 20px;
+        }
         .container {
           display: flex;
           flex-direction: column;
           width: 100%;
           flex-wrap: wrap;
+
 
           .task {
             display: grid;
@@ -206,11 +224,36 @@
         margin: 10px 0 0 0;
       }
 
+      .add-new {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        background-color: rgb(250, 224, 138);
+        border-radius: 5px;
+        margin-top: 10px;
+        height: 70px;
+        padding: 0 20px;
+        font-weight: 500;
+        font-size: 20px;
+
+        &:hover {
+          background-color: rgb(248, 216, 109);
+        }
+        
+      }
+      a {
+        text-decoration: none;
+        color: rgb(47, 47, 47);
+      }
+
       .container {
         display: flex;
         flex-wrap: wrap;
         height: 560px;
         overflow-y: scroll;
+
+        
 
         .box {
           height: 270px;

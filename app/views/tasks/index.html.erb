@@ -50,144 +50,144 @@
                 <div class="<%= task.checked ? "name-checked" : "name" %>"><%= task.title %></div>
               </div>
               <div class="<%= task.checked ? "date-checked" : "date" %>"><i class="fa-regular fa-calendar"></i><%= task.date.strftime("%b %d, %Y") %></div>
-            <div class="options">
-              <div>
-                <% if task.checked %>
-                <% else %>
-                  <%= link_to category_task_path(@category, task) do %>
-                    <i class="fa-solid fa-list-ul"></i>
+              <div class="options">
+                <div>
+                  <% if task.checked %>
+                  <% else %>
+                    <%= link_to category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-list-ul"></i>
+                    <% end %>
                   <% end %>
-                <% end %>
-              </div>
-              <div>
-                <% if task.checked %>
-                  <%= link_to category_task_path(@category, task) do %>
-                    <i class="fa-solid fa-list-ul"></i>
+                </div>
+                <div>
+                  <% if task.checked %>
+                    <%= link_to category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-list-ul"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to edit_category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
                   <% end %>
-                <% else %>
-                  <%= link_to edit_category_task_path(@category, task) do %>
-                    <i class="fa-solid fa-pen-to-square"></i>
+                </div>
+                <div>
+                  <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="fa-solid fa-trash-can"></i>
                   <% end %>
-                <% end %>
-              </div>
-              <div>
-                <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <i class="fa-solid fa-trash-can"></i>
-                <% end %>
+                </div>
               </div>
             </div>
-          </div>
+          <% end %>
+        <% elsif %>
+          <div class="no">No Today's Task</div>
         <% end %>
-      <% elsif %>
-        <div class="no">No Today's Task</div>
-      <% end %>
-    </div>
-  </div>
-  <div class="container">
-    <div class="task-title schedule-title">
-      <div><i class="fa-regular fa-calendar-days"></i>Scheduled Tasks</div>
-      <div class="count">
-        <div class="completed"><%= @scheduled.where(checked: "1").count %> Completed</div>
-        <div class="incomplete"><%= @scheduled.count - @scheduled.where(checked: "1").count %> Pending</div>
       </div>
     </div>
-    <div class="box">
-      <% if @scheduled.any? %>
-        <% @scheduled.order(date: :desc).each do |task| %>
-          <div class="<%= task.checked ? "task-checked" : "task" %>">
-            <div class="check">
-              <%= form_with model: task, url: category_task_path(task.category, task) do |f| %>
-                <%= f.check_box :checked, onchange: "this.form.submit()" %>
-              <% end %>
-              <div class="<%= task.checked ? "name-checked" : "name" %>"><%= task.title %></div>
-            </div>
-            <div class="<%= task.checked ? "date-checked" : "date" %>"><i class="fa-regular fa-calendar"></i><%= task.date.strftime("%b %d, %Y") %></div>
-          <div class="options">
-            <div>
-              <% if task.checked %>
-              <% else %>
-                <%= link_to category_task_path(@category, task) do %>
-                  <i class="fa-solid fa-list-ul"></i>
-                <% end %>
-              <% end %>
-            </div>
-            <div>
-              <% if task.checked %>
-                <%= link_to category_task_path(@category, task) do %>
-                  <i class="fa-solid fa-list-ul"></i>
-                <% end %>
-              <% else %>
-                <%= link_to edit_category_task_path(@category, task) do %>
-                  <i class="fa-solid fa-pen-to-square"></i>
-                <% end %>
-              <% end %>
-            </div>
-            <div>
-              <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                <i class="fa-solid fa-trash-can"></i>
-              <% end %>
-            </div>
-          </div>
-        </div>
-      <% end %>
-    <% elsif %>
-      <div class="no">No Scheduled Task</div>
-    <% end %>
-  </div>
-</div>
-<div class="container">
-  <div class="task-title overdue-title">
-    <div><i class="fa-regular fa-calendar-xmark"></i>Overdue Tasks</div>
-    <div class="count">
-      <div class="completed"><%= @overdue.where(checked: "1").count %> Completed</div>
-      <div class="incomplete incomplete-overdue"><%= @overdue.count - @overdue.where(checked: "1").count %> Delayed</div>
-    </div>
-  </div>
-  <div class="box">
-    <% if @overdue.any? %>
-      <% @overdue.order(date: :desc).each do |task| %>
-        <div class="<%= task.checked ? "task-checked" : "task" %>">
-          <div class="check">
-            <%= form_with model: task, url: category_task_path(task.category, task) do |f| %>
-              <%= f.check_box :checked, onchange: "this.form.submit()" %>
-            <% end %>
-            <div class="<%= task.checked ? "name-checked" : "name" %>"><%= task.title %></div>
-          </div>
-          <div class="<%= task.checked ? "date-checked" : "date" %>"><i class="fa-regular fa-calendar"></i><%= task.date.strftime("%b %d, %Y") %></div>
-        <div class="options">
-          <div>
-            <% if task.checked %>
-            <% else %>
-              <%= link_to category_task_path(@category, task) do %>
-                <i class="fa-solid fa-list-ul"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <div>
-            <% if task.checked %>
-              <%= link_to category_task_path(@category, task) do %>
-                <i class="fa-solid fa-list-ul"></i>
-              <% end %>
-            <% else %>
-              <%= link_to edit_category_task_path(@category, task) do %>
-                <i class="fa-solid fa-pen-to-square"></i>
-              <% end %>
-            <% end %>
-          </div>
-          <div>
-            <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
-              <i class="fa-solid fa-trash-can"></i>
-            <% end %>
-          </div>
+    <div class="container">
+      <div class="task-title schedule-title">
+        <div><i class="fa-regular fa-calendar-days"></i>Scheduled Tasks</div>
+        <div class="count">
+          <div class="completed"><%= @scheduled.where(checked: "1").count %> Completed</div>
+          <div class="incomplete"><%= @scheduled.count - @scheduled.where(checked: "1").count %> Pending</div>
         </div>
       </div>
-    <% end %>
-  <% elsif %>
-    <div class="no">No Overdue Task</div>
-  <% end %>
-</div>
-</div>
-</div>
+      <div class="box">
+        <% if @scheduled.any? %>
+          <% @scheduled.order(date: :desc).each do |task| %>
+            <div class="<%= task.checked ? "task-checked" : "task" %>">
+              <div class="check">
+                <%= form_with model: task, url: category_task_path(task.category, task) do |f| %>
+                  <%= f.check_box :checked, onchange: "this.form.submit()" %>
+                <% end %>
+                <div class="<%= task.checked ? "name-checked" : "name" %>"><%= task.title %></div>
+              </div>
+              <div class="<%= task.checked ? "date-checked" : "date" %>"><i class="fa-regular fa-calendar"></i><%= task.date.strftime("%b %d, %Y") %></div>
+              <div class="options">
+                <div>
+                  <% if task.checked %>
+                  <% else %>
+                    <%= link_to category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-list-ul"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div>
+                  <% if task.checked %>
+                    <%= link_to category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-list-ul"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to edit_category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% elsif %>
+          <div class="no">No Scheduled Task</div>
+        <% end %>
+      </div>
+    </div>
+    <div class="container">
+      <div class="task-title overdue-title">
+        <div><i class="fa-regular fa-calendar-xmark"></i>Overdue Tasks</div>
+        <div class="count">
+          <div class="completed"><%= @overdue.where(checked: "1").count %> Completed</div>
+          <div class="incomplete incomplete-overdue"><%= @overdue.count - @overdue.where(checked: "1").count %> Delayed</div>
+        </div>
+      </div>
+      <div class="box">
+        <% if @overdue.any? %>
+          <% @overdue.order(date: :desc).each do |task| %>
+            <div class="<%= task.checked ? "task-checked" : "task" %>">
+              <div class="check">
+                <%= form_with model: task, url: category_task_path(task.category, task) do |f| %>
+                  <%= f.check_box :checked, onchange: "this.form.submit()" %>
+                <% end %>
+                <div class="<%= task.checked ? "name-checked" : "name" %>"><%= task.title %></div>
+              </div>
+              <div class="<%= task.checked ? "date-checked" : "date" %>"><i class="fa-regular fa-calendar"></i><%= task.date.strftime("%b %d, %Y") %></div>
+              <div class="options">
+                <div>
+                  <% if task.checked %>
+                  <% else %>
+                    <%= link_to category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-list-ul"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div>
+                  <% if task.checked %>
+                    <%= link_to category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-list-ul"></i>
+                    <% end %>
+                  <% else %>
+                    <%= link_to edit_category_task_path(@category, task) do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+                <div>
+                  <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="fa-solid fa-trash-can"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% elsif %>
+          <div class="no">No Overdue Task</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 </div>
 </div>

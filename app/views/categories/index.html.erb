@@ -21,83 +21,97 @@
       <% else %>
         <div class="notice"><%= notice %></div>
       <% end %>
-      <div class="container">
-        <% @categories.order(created_at: :desc).each do |category| %>
-          <div class="box">
-            <div class="category"> <%= category.title %> </div>
-            <div class="details">
-              <div class="task-count"><i class="fa-solid fa-thumbtack"></i>
-                <%= pluralize(category.tasks.count, "Task") %></div>
-              <% category.tasks.order(updated_at: :desc).limit(1).each do |task| %>
-                <div> <i class="fa-solid fa-arrows-rotate"></i>Last updated: <%= task.updated_at.strftime("%b %d, %Y") %>
-                </div>
-              <% end %>
+      <% if @categories.any? %>
+        <div class="container">
+          <% @categories.order(created_at: :desc).each do |category| %>
+            <div class="box">
+              <div class="category"> <%= category.title %> </div>
+              <div class="details">
+                <div class="task-count"><i class="fa-solid fa-thumbtack"></i>
+                  <%= pluralize(category.tasks.count, "Task") %></div>
+                <% category.tasks.order(updated_at: :desc).limit(1).each do |task| %>
+                  <div> <i class="fa-solid fa-arrows-rotate"></i>Last updated: <%= task.updated_at.strftime("%b %d, %Y") %>
+                  </div>
+                <% end %>
+              </div>
+              <div class="options">
+                <%= link_to category_tasks_path(category) do %>
+                  <div>
+                    <i class="fa-solid fa-list-ul"></i></div>
+                <% end %>
+                <%= link_to edit_category_path(category) do %>
+                  <div><i class="fa-solid fa-pen-to-square"></i></div>
+                <% end %>
+                <%= link_to category, method: :delete, data: { confirm: "Are you sure you want to delete this category? This can't be undone." } do %>
+                  <div><i class="fa-solid fa-trash-can"></i></div>
+                <% end %>
+              </div>
             </div>
-            <div class="options">
-              <%= link_to category_tasks_path(category) do %>
-                <div>
-                  <i class="fa-solid fa-list-ul"></i></div>
-              <% end %>
-              <%= link_to edit_category_path(category) do %>
-                <div><i class="fa-solid fa-pen-to-square"></i></div>
-              <% end %>
-              <%= link_to category, method: :delete, data: { confirm: "Are you sure you want to delete this category? This can't be undone." } do %>
-                <div><i class="fa-solid fa-trash-can"></i></div>
-              <% end %>
+          <% end %>
+          <%= link_to new_category_path do %>
+            <div class="box new">
+              <i class="fa-solid fa-plus"></i>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
+      <% else %>
         <%= link_to new_category_path do %>
-          <div class="box new">
-            <i class="fa-solid fa-plus"></i>
+          <div class="add-new">
+            + Add Category
           </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
-
     <div class="right">
       <div class="title">
         <i class="fa-solid fa-calendar-check"></i>
         Today's Tasks
       </div>
       <div class="main">
-        <div class="container">
-          <% @today.order(created_at: :desc).each do |task| %>
-            <div class="task">
-              <div class="title-box">
-                <div class="name"> <%= task.title %> </div>
-                <div class="category">  <%= task.category.title %>  </div>
-              </div>
-              <div class="status">
-                <% if task.checked? %>
-                  <div class="completed">Completed</div>
-                <% else %>
-                  <div class="ongoing">Ongoing</div>
-                <% end %>
-              </div>
-              <div class="options">
-                <div>
-                  <%= link_to category_task_path(task.category, task) do %>
-                    <i class="fa-solid fa-list-ul"></i>
+        <% if @today.any? %>
+          <div class="container">
+            <% @today.order(created_at: :desc).each do |task| %>
+              <div class="task">
+                <div class="title-box">
+                  <div class="name"> <%= task.title %> </div>
+                  <div class="category">  <%= task.category.title %>  </div>
+                </div>
+                <div class="status">
+                  <% if task.checked? %>
+                    <div class="completed">Completed</div>
+                  <% else %>
+                    <div class="ongoing">Ongoing</div>
                   <% end %>
                 </div>
-                <div>
-                  <%= link_to edit_category_task_path(task.category, task) do %>
-                    <i class="fa-solid fa-pen-to-square"></i>
-                  <% end %>
-                </div>
-                <div>
-                  <%= link_to category_task_path(task.category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <i class="fa-solid fa-trash-can"></i>
-                  <% end %>
+                <div class="options">
+                  <div>
+                    <%= link_to category_tasks_path(task.category) do %>
+                      <i class="fa-solid fa-list-ul"></i>
+                    <% end %>
+                  </div>
+                  <div>
+                    <%= link_to edit_category_task_path(task.category, task) do %>
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    <% end %>
+                  </div>
+                  <div>
+                    <%= link_to category_task_path(task.category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                      <i class="fa-solid fa-trash-can"></i>
+                    <% end %>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
+          </div>
+        <% else %>
+          <div class="no-task">
+            No Today's Task
           <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
 </div>
 </div>
 </div>

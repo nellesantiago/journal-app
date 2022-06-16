@@ -31,9 +31,12 @@
     .options {
       display: flex;
       align-items: center;
+      font-size: 18px;
+      font-weight: 600;
 
       .fa-user-tie {
         margin-right: 10px;
+        font-size: 16px;
       }
     }
 
@@ -42,6 +45,7 @@
       list-style-type: none;
       margin-left: 60px;
       cursor: pointer;
+      align-items: center;
     }
   }
 
@@ -148,7 +152,6 @@
 
           .incomplete-today {
             background-color: rgb(70, 159, 121);
-
           }
         }
 
