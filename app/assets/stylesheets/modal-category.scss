@@ -54,6 +54,15 @@
             color: rgb(47, 47, 47);
           }
         }
+        #error_explanation {
+          display: flex;
+          margin: 10px 5px;
+          width: 100%;
+          list-style-type: none;
+          color: rgb(220, 51, 51);
+          font-weight: 500;
+          font-size: 14px;
+        }
   
         .form {
           margin-bottom: 20px;
