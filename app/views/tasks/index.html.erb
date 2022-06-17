@@ -54,24 +54,24 @@
                 <div>
                   <% if task.checked %>
                   <% else %>
-                    <%= link_to category_task_path(@category, task) do %>
+                    <%= link_to category_task_path(@category, task), class: "show-task" do %>
                       <i class="fa-solid fa-list-ul"></i>
                     <% end %>
                   <% end %>
                 </div>
                 <div>
                   <% if task.checked %>
-                    <%= link_to category_task_path(@category, task) do %>
+                    <%= link_to category_task_path(@category, task), class: "show-task" do %>
                       <i class="fa-solid fa-list-ul"></i>
                     <% end %>
                   <% else %>
-                    <%= link_to edit_category_task_path(@category, task) do %>
+                    <%= link_to edit_category_task_path(@category, task), class: "edit-task" do %>
                       <i class="fa-solid fa-pen-to-square"></i>
                     <% end %>
                   <% end %>
                 </div>
                 <div>
-                  <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= link_to category_task_path(@category, task), class: "delete-task", method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <i class="fa-solid fa-trash-can"></i>
                   <% end %>
                 </div>
@@ -106,24 +106,24 @@
                 <div>
                   <% if task.checked %>
                   <% else %>
-                    <%= link_to category_task_path(@category, task) do %>
+                    <%= link_to category_task_path(@category, task), class: "show-task" do %>
                       <i class="fa-solid fa-list-ul"></i>
                     <% end %>
                   <% end %>
                 </div>
                 <div>
                   <% if task.checked %>
-                    <%= link_to category_task_path(@category, task) do %>
+                    <%= link_to category_task_path(@category, task), class: "show-task" do %>
                       <i class="fa-solid fa-list-ul"></i>
                     <% end %>
                   <% else %>
-                    <%= link_to edit_category_task_path(@category, task) do %>
+                    <%= link_to edit_category_task_path(@category, task), class: "edit-task" do %>
                       <i class="fa-solid fa-pen-to-square"></i>
                     <% end %>
                   <% end %>
                 </div>
                 <div>
-                  <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= link_to category_task_path(@category, task), class: "delete-task", method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <i class="fa-solid fa-trash-can"></i>
                   <% end %>
                 </div>
@@ -158,24 +158,24 @@
                 <div>
                   <% if task.checked %>
                   <% else %>
-                    <%= link_to category_task_path(@category, task) do %>
+                    <%= link_to category_task_path(@category, task), class: "show-task" do %>
                       <i class="fa-solid fa-list-ul"></i>
                     <% end %>
                   <% end %>
                 </div>
                 <div>
                   <% if task.checked %>
-                    <%= link_to category_task_path(@category, task) do %>
+                    <%= link_to category_task_path(@category, task), class: "show-task" do %>
                       <i class="fa-solid fa-list-ul"></i>
                     <% end %>
                   <% else %>
-                    <%= link_to edit_category_task_path(@category, task) do %>
+                    <%= link_to edit_category_task_path(@category, task), class: "edit-task" do %>
                       <i class="fa-solid fa-pen-to-square"></i>
                     <% end %>
                   <% end %>
                 </div>
                 <div>
-                  <%= link_to category_task_path(@category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
+                  <%= link_to category_task_path(@category, task), class: "delete-task", method: :delete, data: { confirm: 'Are you sure?' } do %>
                     <i class="fa-solid fa-trash-can"></i>
                   <% end %>
                 </div>

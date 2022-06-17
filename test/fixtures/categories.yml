@@ -1,9 +1,8 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  user: one
-
-two:
-  title: MyString
-  user: two
+category:
+  id: 1
+  title: 'Category'
+  user_id: 1
+  created_at: Fri, 17 Jun 2022 10:20:49.596992000 UTC +00:00
+  updated_at: Fri, 17 Jun 2022 10:20:49.596992000 UTC +00:00

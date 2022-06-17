@@ -2,44 +2,48 @@ require "application_system_test_case"
 
 class CategoriesTest < ApplicationSystemTestCase
   setup do
-    @category = categories(:one)
+    @user = users(:user)
+    @category = categories(:category)
+    sign_in @user
+    visit categories_url
   end
 
   test "visiting the index" do
-    visit categories_path
-    assert_selector "h1", text: "Categories"
+    assert_text "Task Categories"
   end
 
-  test "creating a Category" do
-    visit categories_url
-    click_on "New Category"
+  test "creating a category" do
+    click_on(class: "add-category")
 
+    visit new_category_path
     fill_in "Title", with: @category.title
-    fill_in "User", with: @category.user_id
     click_on "Create Category"
 
-    assert_text "Category was successfully created"
-    click_on "Back"
+    assert_text "Category was successfully created."
   end
 
-  test "updating a Category" do
-    visit categories_url
-    click_on "Edit", match: :first
+  test "view a category" do
+    click_on(class: "show-category")
+    assert_text "Today's Task"
+  end
 
+  test "updating a category" do
+    click_on(class: "edit-category")
     fill_in "Title", with: @category.title
-    fill_in "User", with: @category.user_id
     click_on "Update Category"
 
-    assert_text "Category was successfully updated"
-    click_on "Back"
+    assert_text "Category was successfully updated."
   end
 
-  test "destroying a Category" do
-    visit categories_url
+  test "deleting a category" do
     page.accept_confirm do
-      click_on "Destroy", match: :first
+      click_on(class: "delete-category")
     end
 
-    assert_text "Category was successfully destroyed"
+    assert_text "Category was successfully deleted."
+  end
+  
+  test "view all today's task" do
+    assert_text "Today's Task"
   end
 end

@@ -35,7 +35,7 @@ class TasksController < ApplicationController
     def update
       respond_to do |format|
         if @task.update(task_params)
-          format.html { redirect_to category_tasks_path, notice: "Succesfully updated task!" }
+          format.html { redirect_to category_tasks_path, notice: "Successfully updated task!" }
           format.json { render :show, status: :ok, location: @task }
         else
           format.html { render :edit, status: :unprocessable_entity }
