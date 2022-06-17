@@ -1,9 +1,9 @@
 <%= form_with(model: category) do |form| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
-        <% category.errors.each do |error| %>
-          <div><%= error.full_message %></div>
-        <% end %>
+      <% category.errors.each do |error| %>
+        <div><%= error.full_message %></div>
+      <% end %>
     </div>
   <% end %>
   <div class="field">

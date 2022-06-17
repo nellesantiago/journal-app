@@ -16,7 +16,7 @@ class CategoriesTest < ApplicationSystemTestCase
     click_on(class: "add-category")
 
     visit new_category_path
-    fill_in "Title", with: @category.title
+    fill_in "Title", with: "New Category"
     click_on "Create Category"
 
     assert_text "Category was successfully created."
