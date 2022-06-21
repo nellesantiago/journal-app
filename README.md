@@ -1,24 +1,26 @@
-# README
+### ✨ [Journal App (Click to see live version)](https://ergo-journal-app.herokuapp.com/)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+>> ###### Features:
+>> - Log in and sign up with devise
+>> - Add, view, edit, and delete categories
+>> - View all today's task
+>> - Scheduled and overdue tasks
+>> - Add, view, edit, and delete tasks
+>> - Shows task status
 
-Things you may want to cover:
+![Log In Page](app/assets/images/login.png)
 
-* Ruby version
+![Sign Up Page](app/assets/images/sign-up.png)
 
-* System dependencies
+![Forgot Password Page](app/assets/images/forgot-password.png)
 
-* Configuration
+![Categories Page](app/assets/images/index.png)
 
-* Database creation
+![Tasks Page](app/assets/images/tasks1.png)
 
-* Database initialization
+![Tasks Page](app/assets/images/tasks2.png) 
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+>> ###### Sources:
+>> - Heartcombo's [Devise Tutorial](https://github.com/heartcombo/devise)
+>> - Vector image: [Freepik.com](https://www.freepik.com/free-vector/team-happy-office-workers-celebrating-professional-victory_19216895.htm#page=2&query=happy%20office%20worker%20vector&position=4&from_view=search)
+>> Ruby on Rails's [Guides](https://guides.rubyonrails.org/v6.1/)
