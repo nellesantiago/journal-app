@@ -70,12 +70,9 @@
       <div class="main">
         <% if @today.any? %>
           <div class="container">
-            <% @today.order(created_at: :desc).each do |task| %>
-              <div class="task">
-                <div class="title-box">
-                  <div class="name"> <%= task.title %> </div>
-                  <div class="category">  <%= task.category.title %>  </div>
-                </div>
+            <% @today.order(created_at: :asc).each do |task| %>
+              <%= link_to category_tasks_path(task.category), class: "task" do %>
+                <div class="name"> <%= task.title %> </div>
                 <div class="status">
                   <% if task.checked? %>
                     <div class="completed">Completed</div>
@@ -84,23 +81,8 @@
                   <% end %>
                 </div>
                 <div class="options">
-                  <div>
-                    <%= link_to category_tasks_path(task.category) do %>
-                      <i class="fa-solid fa-list-ul"></i>
-                    <% end %>
-                  </div>
-                  <div>
-                    <%= link_to edit_category_task_path(task.category, task) do %>
-                      <i class="fa-solid fa-pen-to-square"></i>
-                    <% end %>
-                  </div>
-                  <div>
-                    <%= link_to category_task_path(task.category, task), method: :delete, data: { confirm: 'Are you sure?' } do %>
-                      <i class="fa-solid fa-trash-can"></i>
-                    <% end %>
-                  </div>
-                </div>
-              </div>
+                <div class="category">  <%= task.category.title %>  </div></div>
+              <% end %>
             <% end %>
           </div>
         <% else %>

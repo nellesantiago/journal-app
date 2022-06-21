@@ -203,7 +203,10 @@
             .name-checked {
               margin-left: 10px;
               cursor: pointer;
-              text-transform: capitalize;
+
+              &:first-child {
+                text-transform: capitalize;
+              }
             }
 
             .name-checked {
