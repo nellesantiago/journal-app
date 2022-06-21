@@ -10,10 +10,6 @@
 
 ![Log In Page](app/assets/images/login.png)
 
-![Sign Up Page](app/assets/images/sign-up.png)
-
-![Forgot Password Page](app/assets/images/forgot-password.png)
-
 ![Categories Page](app/assets/images/index.png)
 
 ![Tasks Page](app/assets/images/tasks1.png)
