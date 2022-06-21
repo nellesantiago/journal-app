@@ -2,9 +2,11 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
+gem 'net-smtp', require: false
+gem 'net-imap', require: false
+gem 'net-pop', require: false
 gem 'jquery-rails'
 gem 'htmlbeautifier'
-gem 'net-smtp'
 gem 'devise'
 gem 'guard-livereload'
 gem 'rack-livereload'
