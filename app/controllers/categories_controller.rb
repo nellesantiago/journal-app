@@ -2,14 +2,14 @@ class CategoriesController < ApplicationController
   before_action :authenticate_user!, except: :page
   before_action :set_category, only: %i[ show edit update destroy]
 
-  # GET /categories or /categories.json
+  # GET /categories
   def index
     @categories = current_user.categories
     @tasks = current_user.tasks
     @today = @tasks.where('date = ?', Date.current)
   end
 
-  # GET /categories/1 or /categories/1.json
+  # GET /categories/id/tasks
   def show
     @tasks = @category.tasks
   end
@@ -19,55 +19,43 @@ class CategoriesController < ApplicationController
     @category = current_user.categories.build
   end
 
-  # GET /categories/1/edit
+  # GET /categories/id/edit
   def edit
   end
 
-  # POST /categories or /categories.json
+  # POST /categories
   def create
     @category = current_user.categories.build(category_params)
 
-    respond_to do |format|
       if @category.save
-        format.html { redirect_to categories_path, notice: "Category was successfully created." }
-        format.json { render :show, status: :created, location: @category }
+        redirect_to categories_path, notice: "Category was successfully created."
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+       render :new
     end
   end
 
-  # PATCH/PUT /categories/1 or /categories/1.json
+  # PATCH/PUT /categories/id
   def update
-    respond_to do |format|
       if @category.update(category_params)
-        format.html { redirect_to categories_path, notice: "Category was successfully updated." }
-        format.json { render :show, status: :ok, location: @category }
+       redirect_to categories_path, notice: "Category was successfully updated."
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @category.errors, status: :unprocessable_entity }
-      end
+        render :edit
     end
   end
 
-  # DELETE /categories/1 or /categories/1.json
+  # DELETE /categories/id
   def destroy
     @category.destroy
 
-    respond_to do |format|
-      format.html { redirect_to categories_url, notice: "Category was successfully deleted." }
-      format.json { head :no_content }
-    end
+    redirect_to categories_url, notice: "Category was successfully deleted." 
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+ 
     def set_category
       @category = current_user.categories.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def category_params
       params.require(:category).permit(:title, :user_id)
     end

@@ -21,36 +21,25 @@ class TasksController < ApplicationController
     def create
       @task = @category.tasks.create(task_params)
   
-      respond_to do |format|
         if @task.save
-          format.html { redirect_to category_tasks_path(@category), notice: "Task was successfully created." }
-          format.json { render :show, status: :created, location: @task }
+          redirect_to category_tasks_path(@category), notice: "Task was successfully created."
         else
-          format.html { render :new, status: :unprocessable_entity }
-          format.json { render json: @task.errors, status: :unprocessable_entity }
-        end
+         render :new
       end
     end
   
     def update
-      respond_to do |format|
         if @task.update(task_params)
-          format.html { redirect_to category_tasks_path, notice: "Successfully updated task!" }
-          format.json { render :show, status: :ok, location: @task }
+          redirect_to category_tasks_path, notice: "Successfully updated task!"
         else
-          format.html { render :edit, status: :unprocessable_entity }
-          format.json { render json: @task.errors, status: :unprocessable_entity }
-        end
+         render :edit
       end
     end
   
     def destroy
       @task.destroy
   
-      respond_to do |format|
-        format.html { redirect_to category_tasks_path, notice: "Task was successfully deleted." }
-        format.json { head :no_content }
-      end
+       redirect_to category_tasks_path, notice: "Task was successfully deleted."
     end
   
     private
