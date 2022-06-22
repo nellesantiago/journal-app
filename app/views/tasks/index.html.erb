@@ -41,7 +41,7 @@
       </div>
       <div class="box">
         <% if @today.any? %>
-          <% @today.order(created_at: :asc).each do |task| %>
+          <% @today.order(checked: :asc).each do |task| %>
             <div class="<%= task.checked ? "task-checked" : "task" %>">
               <div class="check">
                 <%= form_with model: task, url: category_task_path(task.category, task) do |f| %>
@@ -93,7 +93,7 @@
       </div>
       <div class="box">
         <% if @scheduled.any? %>
-          <% @scheduled.order(date: :desc).each do |task| %>
+          <% @scheduled.order(checked: :asc).each do |task| %>
             <div class="<%= task.checked ? "task-checked" : "task" %>">
               <div class="check">
                 <%= form_with model: task, url: category_task_path(task.category, task) do |f| %>
@@ -145,7 +145,7 @@
       </div>
       <div class="box">
         <% if @overdue.any? %>
-          <% @overdue.order(date: :desc).each do |task| %>
+          <% @overdue.order(checked: :asc).each do |task| %>
             <div class="<%= task.checked ? "task-checked" : "task" %>">
               <div class="check">
                 <%= form_with model: task, url: category_task_path(task.category, task) do |f| %>
