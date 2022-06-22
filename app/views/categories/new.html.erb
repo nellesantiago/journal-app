@@ -4,7 +4,7 @@
       <div class="title">
         <div class="flex">
           <div>Add New Category</div>
-          <% if @category.title.blank? %>
+          <% if @category.title.blank? || @category.errors.any? %>
           <% else %>
           <div class="name"><%= @category.title%></div> <% end %>
         </div>
