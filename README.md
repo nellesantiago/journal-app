@@ -1,12 +1,11 @@
 ### ✨ [Journal App (Click to see live version)](https://ergo-journal-app.herokuapp.com/)
 
->> ###### Features:
->> - Log in and sign up with devise
->> - Add, view, edit, and delete categories
->> - View all today's task
->> - Scheduled and overdue tasks
->> - Add, view, edit, and delete tasks
->> - Shows task status
+>> ###### *A Ruby on Rails web application that allows users to organize their tasks.*
+>> - Built a feature using conditional statement, count method, and SaSS to show the ongoing, pending, completed, and delayed tasks.
+>> - Added a feature that allows users to tick the checkbox on the tasks table once done with their task by installing JQuery Rails gem.
+>> - Validated the uniqueness of category titles so users can see if the title already exists by utilizing model validation.
+>> - Used devise test helpers to do a system test to simulate user interaction within the application.
+>> - Created a task table associated with categories table so users can organize their tasks.
 
 ![Log In Page](app/assets/images/login.png)
 
